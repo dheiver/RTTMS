@@ -1,46 +1,51 @@
-# Código de Simulação de Tensão em Riser
+📊 Simulador de Riser Avançado 🚀
 
-Este código em Python simula a tensão em um riser (um componente de engenharia) ao longo do tempo, levando em consideração vários parâmetros, incluindo gradientes de temperatura, gradientes de pressão e outros fatores.
+**Descrição:**
 
-## Função `calcular_tensao_verdadeira`
+Este repositório contém um simulador de riser avançado desenvolvido em Python. O simulador é projetado para modelar e analisar a tensão verdadeira em risers submarinos, levando em consideração gradientes de temperatura, gradientes de pressão, erros de medição, compensação de temperatura e pressão, forças aplicadas e ruído.
 
-A função `calcular_tensao_verdadeira` calcula a tensão verdadeira com base nos seguintes componentes:
+O simulador é uma ferramenta poderosa para engenheiros e pesquisadores que trabalham em projetos relacionados à exploração de petróleo e gás em ambientes submarinos. Ele fornece informações valiosas para avaliar a integridade estrutural dos risers e tomar decisões informadas sobre o projeto e operação.
 
-- Erro de medição simulado
-- Gradientes de temperatura
-- Gradientes de pressão
-- Força aplicada
-- Área do riser
-- Tensão devido à força
+**Funcionalidades Principais:**
 
-A tensão verdadeira é calculada combinando esses componentes.
+- Definição de parâmetros personalizados, como número de segmentos, tensão medida, coeficiente de erro, desvio de ruído e muito mais.
+- Simulação de gradientes de temperatura e pressão para cada segmento do riser.
+- Ajuste de uma função não linear aos gradientes de temperatura.
+- Cálculo da tensão verdadeira considerando vários fatores, incluindo erros, compensação de temperatura e pressão e forças aplicadas.
+- Visualização dos resultados em gráficos interativos.
+- Geração de relatórios detalhados com estatísticas de tensão verdadeira.
 
-## Função `criar_gradientes`
+**Instruções de Uso:**
 
-A função `criar_gradientes` gera gradientes de temperatura e pressão, incluindo a amplitude, frequência e deslocamento desses gradientes. Esses gradientes são usados para calcular a tensão ao longo do riser.
+1. Clone o repositório para sua máquina local.
+2. Configure os parâmetros iniciais no código-fonte, se necessário.
+3. Execute o simulador para gerar simulações de risers avançados.
+4. Visualize os resultados em gráficos interativos.
+5. Gere relatórios detalhados para análise.
 
-## Função `criar_riser`
+**Exemplo de Uso:**
 
-A função `criar_riser` cria um riser com base nos parâmetros fornecidos e gera tensões verdadeiras para cada segmento do riser usando os gradientes de temperatura e pressão gerados.
+```python
+# Defina os parâmetros iniciais
+parametros = Parametros(
+    num_segmentos=10, 
+    tensao_medida=150.0, 
+    coef_erro=0.0, 
+    desvio_ruido=1.0, 
+    forca=500.0, 
+    kt=0.0002, 
+    kp=0.00005, 
+    kf=0.001, 
+    dia_interno=0.35, 
+    dia_externo=0.45
+)
 
-## Função `otimizar_parametros`
+# Execute o simulador para um segmento específico
+segmento_selecionado = 0
+tensao_cabeca = criar_riser_avancado(parametros, gradientes_temp, gradientes_pressao, segmento_selecionado)
 
-A função `otimizar_parametros` otimiza os parâmetros do sistema para minimizar a tensão máxima no riser. Os parâmetros otimizados são calculados usando a função `minimize` da biblioteca `scipy`.
+# Visualize os resultados
+criar_visualizacoes_tempo(tensao_cabeca, gradientes_temp, gradientes_pressao, dias, segmento_selecionado)
 
-## Função `criar_visualizacoes_tempo`
-
-A função `criar_visualizacoes_tempo` gera visualizações dos resultados, incluindo gráficos da tensão verdadeira, gradientes de temperatura e gradientes de pressão ao longo do tempo.
-
-## Resultados e Uso
-
-Os parâmetros otimizados são usados para criar o riser e gerar visualizações. Os resultados podem ser personalizados ajustando o número de segmentos e o número de dias de simulação.
-
-## Autores
-
-Este código foi desenvolvido por [Seu Nome].
-
----
-
-**Nota:** Certifique-se de que as bibliotecas `numpy`, `matplotlib` e `scipy` estejam instaladas no ambiente Python para executar este código.
-
-![Visualização do Riser](riser_visualizations.png)
+# Gere um relatório completo
+gerar_relatorio_completo(tensao_cabeca, segmento_selecionado)
